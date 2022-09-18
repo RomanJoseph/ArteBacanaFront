@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import UserContext from "./contexts/UserContext";
 import ProductsPage from "./pages/ProductsPage";
 import Header from "./components/Header";
+import Login from "./components/Login";
 
 export default function App() {
   const [userData, setUserData] = useState(null);
@@ -20,11 +21,17 @@ export default function App() {
 
           <Route path="/products" element={
             <UserContext.Provider value={{ userData }}>
-              <Header />
-              <ProductsPage />
+              <Header/>
+              <ProductsPage/>
             </UserContext.Provider>
           } />
 
+          <Route path="/login" element={
+            <UserContext.Provider value={{ userData }}>
+              <Header/>
+              <Login/>
+            </UserContext.Provider>
+          } />
 
         </Routes>
       </BrowserRouter>
