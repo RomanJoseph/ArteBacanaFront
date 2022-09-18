@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState } from "react";
+import styled from 'styled-components';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-function App() {
+import UserContext from "./contexts/UserContext";
+import ProductsPage from "./pages/ProductsPage";
+import Header from "./components/Header";
+
+export default function App() {
+  const [userData, setUserData] = useState(null);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Body>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={
+            <Navigate to="/products" />
+          } />
+
+          <Route path="/products" element={
+            <UserContext.Provider value={{ userData }}>
+              <Header />
+              <ProductsPage />
+            </UserContext.Provider>
+          } />
+
+
+        </Routes>
+      </BrowserRouter>
+    </Body>
   );
 }
 
-export default App;
+const Body = styled.div`
+  min-height: 100vh;
+
+  background-color: #DCDCDD;
+`;
