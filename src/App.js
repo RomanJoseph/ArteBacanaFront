@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import PaymentPage from "./components/PaymentPage";
 import ProductPage from "./pages/ProductPage";
+import CartPage from "./pages/CartPage";
 
 export default function App() {
   const [userData, setUserData] = useState(null);
@@ -42,11 +43,18 @@ export default function App() {
               <Register />
             </UserContext.Provider>
           } />
-            
+
           <Route path="/products/:id" element={
             <UserContext.Provider value={{ userData, setUserData }}>
               <Header />
               <ProductPage />
+            </UserContext.Provider>
+          } />
+
+          <Route path="/cart" element={
+            <UserContext.Provider value={{ userData, setUserData }}>
+              <Header />
+              <CartPage />
             </UserContext.Provider>
           } />
 

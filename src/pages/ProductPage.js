@@ -23,6 +23,11 @@ export default function ProductPage() {
     }, []);
 
     function addToCart() {
+        if (!userData) {
+            alert("você não está logado");
+            return;
+        }
+
         const promise = axios.post("http://localhost:5000/cart",
         {
             id: params.id
