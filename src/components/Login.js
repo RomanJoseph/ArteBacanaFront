@@ -4,6 +4,8 @@ import { useContext, useState } from 'react';
 import UserContext from '../contexts/UserContext.js';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export default function Login() {
 const [form, setForm] = useState()

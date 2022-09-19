@@ -3,6 +3,8 @@ import { useContext } from "react";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import dotenv from 'dotenv';
+dotenv.config();
 
 import UserContext from "../contexts/UserContext";
 import cart from "../assets/cart.svg";

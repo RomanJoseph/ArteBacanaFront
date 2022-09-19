@@ -3,6 +3,8 @@ import styled from "styled-components"
 import { useEffect, useContext } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import dotenv from 'dotenv';
+dotenv.config();
 
 import UserContext from "../contexts/UserContext";
 
