@@ -18,7 +18,6 @@ export default function ProductPage() {
 
         promise.then(response => {
             setProduct(response.data);
-            console.log(response.data);
         })
     }, []);
 
