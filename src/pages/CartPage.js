@@ -19,20 +19,23 @@ export default function CartPage() {
 
     const navigate = useNavigate();
 
-    if (userData) {
-        useEffect(() => {
-            const promise = axios.get(`${process.env.REACT_APP_API_BASE_URL}/cart`, {
-                headers: {
-                    Authorization: `Bearer ${userData.token}`
-                }
-            });
+    useEffect(() => {
+        if (!userData) {
+            return;
+        }
+        
+        const promise = axios.get(`${process.env.REACT_APP_API_BASE_URL}/cart`, {
+            headers: {
+                Authorization: `Bearer ${userData.token}`
+            }
+        });
 
-            promise.then(response => {
-                setCartItems(response.data.cartArray);
-                console.log(response.data);
-            })
-        }, []);
-    }
+        promise.then(response => {
+            setCartItems(response.data.cartArray);
+            console.log(response.data);
+        })
+    }, []);
+
 
     function navigateCheckout() {
         navigate("/checkout");
