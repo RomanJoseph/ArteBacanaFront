@@ -40,7 +40,7 @@ export default function Register(){
             <input onChange={handleForm} name="password" type="password" placeholder='suasenha123aqui' required/>
             <label for="passwordConfirmation">Confirme sua senha:</label>
             <input onChange={handleForm} name="passwordConfirmation" type="password" placeholder='suasenha123aqui' required/>
-            <input name="Login" type="submit" value="Cadastrar"/>
+            <input name="Register" type="submit" value="Cadastrar"/>
         </RegisterForm>
         <span onClick={() => navigate("/login")}>Já possui um cadastro ? Faça Login agora !</span>
     </RegisterPage>
@@ -89,7 +89,7 @@ const RegisterForm = styled.form`
         text-align: center;
     }
 
-    input[name="Login"]{
+    input[name="Register"]{
         margin-top: 45px;
         background-color: #CCCCCC;
     }

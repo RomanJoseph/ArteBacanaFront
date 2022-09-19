@@ -2,18 +2,20 @@ import React from "react";
 import { useContext } from "react";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import UserContext from "../contexts/UserContext";
 import cart from "../assets/cart.svg";
 
 export default function Header() {
     const { userData } = useContext(UserContext);
+    const navigate = useNavigate();
 
     return (
         <Container>
             <div>
 
-                <Title>ArteBacana</Title>
+                <Title onClick={() => navigate("/payment")}>ArteBacana</Title>
 
                 <SearchBar><p>Pesquisar</p></SearchBar>
 
