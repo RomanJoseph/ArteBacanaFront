@@ -58,6 +58,13 @@ export default function App() {
             </UserContext.Provider>
           } />
 
+          <Route path="/checkout" element={
+            <UserContext.Provider value={{ userData, setUserData }}>
+              <Header />
+              <PaymentPage />
+            </UserContext.Provider>
+          } />
+
         </Routes>
       </BrowserRouter>
     </Body>
