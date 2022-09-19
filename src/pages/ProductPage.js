@@ -27,7 +27,7 @@ export default function ProductPage() {
             return;
         }
 
-        const promise = axios.post("http://localhost:5000/cart",
+        const promise = axios.post(`${process.env.REACT_APP_API_BASE_URL}/cart`,
         {
             id: params.id
         },

@@ -21,7 +21,7 @@ export default function Register(){
         if(form.passwordConfirmation !== form.password){
             return alert("Suas senhas não coincidem")
         }
-        const promise = axios.post("http://localhost:5000/register", {name:form.name, password:form.password, email:form.email})
+        const promise = axios.post(`${process.env.REACT_APP_API_BASE_URL}/register`, {name:form.name, password:form.password, email:form.email})
         promise.then((res) => {
             alert("Cadastro criado com sucesso!")
             return navigate("/login")

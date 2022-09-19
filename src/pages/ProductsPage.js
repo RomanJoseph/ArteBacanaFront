@@ -4,12 +4,14 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 import Product from "../components/Product";
+import dotenv from 'dotenv';
+dotenv.config();
 
 export default function ProductsPage() {
     const [productsList, setProductsList] = useState([]);
 
     useEffect(() => {
-        const promise = axios.get("http://localhost:5000/products");
+        const promise = axios.get(`${process.env.REACT_APP_API_BASE_URL}/products`);
 
         promise.catch(response => { console.log(response) });
 

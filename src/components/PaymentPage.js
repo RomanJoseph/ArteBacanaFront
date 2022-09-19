@@ -15,7 +15,7 @@ export default function PaymentPage(){
     }
 
     useEffect(() => {
-        const promise = axios.post("http://localhost:5000/checkout", {},{
+        const promise = axios.post(`${process.env.REACT_APP_API_BASE_URL}/checkout`, {},{
             headers: {
                 Authorization: `Bearer ${userData.token}`
             }

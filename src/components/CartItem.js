@@ -11,7 +11,7 @@ export default function CartItem({ cartItemId, setTotalValue, totalValue, index 
     const [cartItem, setCartItem] = useState({});
 
     useEffect(() => {
-        const promise = axios.get(`http://localhost:5000/products/${cartItemId}`);
+        const promise = axios.get(`${process.env.REACT_APP_API_BASE_URL}/products/${cartItemId}`);
 
         promise.then(response => {
             setCartItem(response.data);
@@ -20,7 +20,7 @@ export default function CartItem({ cartItemId, setTotalValue, totalValue, index 
     }, []);
 
     function removeItem() {
-        const promise = axios.put(`http://localhost:5000/cart/${index}`, {},
+        const promise = axios.put(`${process.env.REACT_APP_API_BASE_URL}/cart/${index}`, {},
             {
                 headers: {
                     Authorization: `Bearer ${userData.token}`
