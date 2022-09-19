@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import styled from 'styled-components';
+import { useNavigate } from "react-router-dom";
 
 import UserContext from '../contexts/UserContext';
 import CartItem from "../components/CartItem";
@@ -11,6 +12,8 @@ export default function CartPage() {
 
     const [cartItems, setCartItems] = useState([]);
     const [totalValue, setTotalValue] = useState(0);
+
+    const navigate = useNavigate();
 
     if (userData) {
         useEffect(() => {
@@ -25,6 +28,10 @@ export default function CartPage() {
                 console.log(response.data);
             })
         }, []);
+    }
+
+    function navigateCheckout() {
+        navigate("/checkout");
     }
 
     return (
@@ -54,7 +61,7 @@ export default function CartPage() {
 
             </CartContainer>
 
-            <CheckOutButton>
+            <CheckOutButton onClick={navigateCheckout}>
                 <p>Ir para checkout</p>
             </CheckOutButton>
 
