@@ -25,7 +25,7 @@ export default function ProductPage() {
                 <DataContainer>
                     <div>
                         <ArtName>{product.name}</ArtName>
-                        <AutorName>By: {product.vendor}</AutorName>
+                        <AutorName>By: {product.seller}</AutorName>
                         <PriceTag>R$ {product.price}</PriceTag>
                     </div>
                     <div>
