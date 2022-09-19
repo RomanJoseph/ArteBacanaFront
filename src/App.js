@@ -8,6 +8,7 @@ import ProductsPage from "./pages/ProductsPage";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import ProductPage from "./pages/ProductPage";
 
 export default function App() {
   const [userData, setUserData] = useState(null);
@@ -38,6 +39,13 @@ export default function App() {
             <UserContext.Provider value={{ userData, setUserData }}>
               <Header />
               <Register />
+            </UserContext.Provider>
+          } />
+
+          <Route path="/products/:id" element={
+            <UserContext.Provider value={{ userData, setUserData }}>
+              <Header />
+              <ProductPage />
             </UserContext.Provider>
           } />
 
