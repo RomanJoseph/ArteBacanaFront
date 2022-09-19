@@ -1,9 +1,28 @@
 import React from "react";
-import { useState } from "react"
 import styled from "styled-components"
+import { useEffect, useContext } from "react";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
+import UserContext from "../contexts/UserContext";
 
 export default function PaymentPage(){
-    const [ method, setMethod ] = useState
+    const { userData } = useContext(UserContext);
+
+    if (!userData) {
+        const navigate = useNavigate();
+        navigate('/products');
+    }
+
+    useEffect(() => {
+        const promise = axios.post("http://localhost:5000/checkout", {},{
+            headers: {
+                Authorization: `Bearer ${userData.token}`
+            }
+        } );
+
+        promise.then(() => {console.log("deu bom")});
+    })
 
 
 
