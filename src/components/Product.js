@@ -2,7 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
-export default function Product({ product }) {    
+export default function Product({ product }) {
     return (
         <Link to={`/products/${product._id}`} style={{ textDecoration: 'none'}}>
             <ProductContainer>
@@ -26,7 +26,9 @@ const ProductContainer = styled.div`
     padding: 3px;
 
     img {
-        border-radius: 3px;
+        width: 200px;
+        height: 160px;
+        border-radius: 12px;
         margin-bottom: 2px;
     }
     
