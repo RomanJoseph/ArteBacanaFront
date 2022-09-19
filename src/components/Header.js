@@ -32,7 +32,7 @@ export default function Header() {
 
                     )
                         :
-                        (<p>Olá, {userData.name}</p>)
+                        (<p>Olá, {userData.user}</p>)
                     }
 
                     <Link to="/cart">
@@ -83,7 +83,7 @@ const Credencials = styled.div`
         font-size: 13px;
         font-weight: bold;
 
-        margin-right: 5px;
+        margin-right: 20px;
 
         color: black;
     }

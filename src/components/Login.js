@@ -2,24 +2,29 @@ import styled from 'styled-components';
 import { useContext, useState } from 'react';
 import UserContext from '../contexts/UserContext.js';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
 const [form, setForm] = useState()
 const { userData, setUserData} = useContext(UserContext)
+const navigate = useNavigate()
 
 function handleForm(event){
     setForm({
         ...form,[event.target.name]:event.target.value
     })
-    console.log(form)
 }
 
 function submitLogin(event){
     event.preventDefault()
 
     const promise = axios.post("http://localhost:5000/login", form)
-    promise.then((res) => console.log(res.data))
-    promise.catch(() => console.log("Algo deu errado"))
+    promise.then((res) => {
+        setUserData(res.data)
+        console.log(res.data)
+        return navigate("/")
+    })
+    promise.catch((err)  => alert("Verifique se o e-mail ou a senha foram digitados corretamente"))
 }
 
     return (
@@ -32,6 +37,7 @@ function submitLogin(event){
                 <input onChange={handleForm} name="password" type="password" placeholder='suasenha123aqui'/>
                 <input name="Login" type="submit" value="Login"/>
             </LoginForm>
+            <span onClick={() => navigate("/register")}>Ainda não tem cadastro ? Faça um agora !</span>
         </LoginPage>
     )
 }
@@ -46,6 +52,11 @@ const LoginPage = styled.div`
     h1{
         font-size: 45px;
         font-weight: 400;
+    }
+
+    span{
+        margin-top: 40px;
+        cursor: pointer;
     }
 `
 

@@ -7,10 +7,11 @@ import UserContext from "./contexts/UserContext";
 import ProductsPage from "./pages/ProductsPage";
 import Header from "./components/Header";
 import Login from "./components/Login";
+import Register from "./components/Register";
 
 export default function App() {
   const [userData, setUserData] = useState(null);
-  
+
   return (
     <Body>
       <BrowserRouter>
@@ -21,15 +22,22 @@ export default function App() {
 
           <Route path="/products" element={
             <UserContext.Provider value={{ userData }}>
-              <Header/>
-              <ProductsPage/>
+              <Header />
+              <ProductsPage />
             </UserContext.Provider>
           } />
 
           <Route path="/login" element={
-            <UserContext.Provider value={{ userData }}>
-              <Header/>
-              <Login/>
+            <UserContext.Provider value={{ userData, setUserData }}>
+              <Header />
+              <Login />
+            </UserContext.Provider>
+          } />
+
+          <Route path="/register" element={
+            <UserContext.Provider value={{ userData, setUserData }}>
+              <Header />
+              <Register />
             </UserContext.Provider>
           } />
 
