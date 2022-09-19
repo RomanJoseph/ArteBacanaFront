@@ -26,7 +26,6 @@ const ProductContainer = styled.div`
     padding: 3px;
 
     img {
-        width: 200px;
         height: 160px;
         border-radius: 12px;
         margin-bottom: 2px;
