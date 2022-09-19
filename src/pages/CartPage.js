@@ -17,7 +17,7 @@ export default function CartPage() {
 
     if (userData) {
         useEffect(() => {
-            const promise = axios.get("http://localhost:5000/cart", {
+            const promise = axios.get(`${process.env.REACT_APP_API_BASE_URL}/cart`, {
                 headers: {
                     Authorization: `Bearer ${userData.token}`
                 }
