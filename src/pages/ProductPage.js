@@ -2,11 +2,12 @@ import React from "react";
 import { useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import styled from 'styled-components';
-import dotenv from 'dotenv';
-dotenv.config();
+import styled from 'styled-components'
 
 import UserContext from '../contexts/UserContext';
+
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 export default function ProductPage() {

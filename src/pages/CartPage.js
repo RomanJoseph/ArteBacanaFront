@@ -3,11 +3,13 @@ import { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
-import dotenv from 'dotenv';
-dotenv.config();
+
 
 import UserContext from '../contexts/UserContext';
 import CartItem from "../components/CartItem";
+
+import dotenv from 'dotenv';
+dotenv.config();
 
 export default function CartPage() {
     const { userData } = useContext(UserContext);
