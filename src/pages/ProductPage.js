@@ -1,11 +1,15 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import styled from 'styled-components';
 
+import UserContext from '../contexts/UserContext';
+
 
 export default function ProductPage() {
+    const { userData } = useContext(UserContext);
+    
     const params = useParams();
     const [product, setProduct] = useState({});
 
@@ -17,6 +21,20 @@ export default function ProductPage() {
             console.log(response.data);
         })
     }, []);
+
+    function addToCart() {
+        const promise = axios.post("http://localhost:5000/cart",
+        {
+            id: params.id
+        },
+        {
+            headers: {
+                Authorization: `Bearer ${userData.token}`
+            }
+        });
+
+        promise.then(() => {console.log("deu bom")});
+    }
 
     return (
         <Container>
@@ -35,7 +53,7 @@ export default function ProductPage() {
 
             </ProductContainer>
 
-            <CartButton>
+            <CartButton onClick={addToCart}>
                 <p>Adicionar ao carrinho</p>
             </CartButton>
 
