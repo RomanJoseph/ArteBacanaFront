@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import styled from 'styled-components';
+import dotenv from 'dotenv';
+dotenv.config();
 
 import UserContext from '../contexts/UserContext';
 
@@ -14,7 +16,7 @@ export default function ProductPage() {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        const promise = axios.get(`http://localhost:5000/products/${params.id}`);
+        const promise = axios.get(`${process.env.REACT_APP_API_BASE_URL}/products/${params.id}`);
 
         promise.then(response => {
             setProduct(response.data);
