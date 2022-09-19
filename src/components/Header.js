@@ -15,7 +15,7 @@ export default function Header() {
         <Container>
             <div>
 
-                <Title onClick={() => navigate("/payment")}>ArteBacana</Title>
+                <Title onClick={() => navigate("/products")}>ArteBacana</Title>
 
                 <SearchBar><p>Pesquisar</p></SearchBar>
 
