@@ -8,37 +8,37 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default function Login() {
-const [form, setForm] = useState()
-const { userData, setUserData} = useContext(UserContext)
-const navigate = useNavigate()
+    const [form, setForm] = useState()
+    const { userData, setUserData } = useContext(UserContext)
+    const navigate = useNavigate()
 
-function handleForm(event){
-    setForm({
-        ...form,[event.target.name]:event.target.value
-    })
-}
+    function handleForm(event) {
+        setForm({
+            ...form, [event.target.name]: event.target.value
+        })
+    }
 
-function submitLogin(event){
-    event.preventDefault()
+    function submitLogin(event) {
+        event.preventDefault()
 
-    const promise = axios.post(`${process.env.REACT_APP_API_BASE_URL}/login`, form)
-    promise.then((res) => {
-        setUserData(res.data)
-        console.log(res.data)
-        return navigate("/")
-    })
-    promise.catch((err)  => alert("Verifique se o e-mail ou a senha foram digitados corretamente"))
-}
+        const promise = axios.post(`${process.env.REACT_APP_API_BASE_URL}/login`, form)
+        promise.then((res) => {
+            setUserData(res.data)
+            console.log(res.data)
+            return navigate("/")
+        })
+        promise.catch((err) => alert("Verifique se o e-mail ou a senha foram digitados corretamente"))
+    }
 
     return (
         <LoginPage>
             <h1>Login</h1>
             <LoginForm onSubmit={submitLogin}>
                 <label for="email">E-mail:</label>
-                <input onChange={handleForm} name="email" type="text" placeholder='exemplo@email.com'/>
+                <input onChange={handleForm} name="email" type="text" placeholder='exemplo@email.com' />
                 <label for="password">Senha:</label>
-                <input onChange={handleForm} name="password" type="password" placeholder='suasenha123aqui'/>
-                <input name="Login" type="submit" value="Login"/>
+                <input onChange={handleForm} name="password" type="password" placeholder='suasenha123aqui' />
+                <input name="Login" type="submit" value="Login" />
             </LoginForm>
             <span onClick={() => navigate("/register")}>Ainda não tem cadastro ? Faça um agora !</span>
         </LoginPage>
