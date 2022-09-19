@@ -42,6 +42,13 @@ export default function App() {
               <Register />
             </UserContext.Provider>
           } />
+
+          <Route path="/payment" element={
+            <UserContext.Provider value={{ userData, setUserData }}>
+              <Header />
+              <PaymentPage />
+            </UserContext.Provider>
+          } />
             
           <Route path="/products/:id" element={
             <UserContext.Provider value={{ userData, setUserData }}>

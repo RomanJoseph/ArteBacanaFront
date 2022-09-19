@@ -1,56 +1,113 @@
 import { useState } from "react"
 import styled from "styled-components"
 
-export default function PaymentPage(){
-    const [ method, setMethod ] = useState
+export default function PaymentPage() {
+    const [method, setMethod] = useState()
 
 
+    if (!method) {
+        return (
+            <Choice>
+                <div onClick={() => setMethod("credit")}>
+                    <h1>Cartão de crédito</h1>
+                </div>
+                <div>
+                    <h1 onClick={() => setMethod("pix")}>PIX</h1>
+                </div>
+            </Choice>
+        )
 
-    return(
-        <>
-        <Choice></Choice>
-            <Content>
-                <h1>Dados para o pagamento</h1>
-                <PaymentForm>
-                    <label htmlFor="CPF">Nome:</label>
-                    <input name="CPF" type="text" pattern="[0-9]{11}" placeholder="O lindo nome que está no seu cartão" required/>
-                    <label htmlFor="CPF">CPF:</label>
-                    <input name="CPF" type="text" pattern="[0-9]{11}" placeholder="CPF" required/>
-                    <label htmlFor="creditCardNumber">Número do cartão de crédito:</label>
-                    <input name="creditCardNumber" type="text" pattern="[0-9]{12}" placeholder="Número do cartão" required/>
-                    <label htmlFor="CVV">Código de segurança:</label>
-                    <input name="CVV" type="text" pattern="[0-9]{3}" placeholder="Código de segurança" required/>
-                    <label htmlFor="date">Data de vencimento:</label>
-                    <input name="date" type="date" required/>
-                </PaymentForm>
-                <h1>Dados de entrega</h1>
-                <PaymentForm>
-                    <label htmlFor="street">Rua:</label>
-                    <input name="street" type="text" placeholder="A rua da sua casa" required/>
-                    <label htmlFor="number">Número:</label>
-                    <input name="number" type="number" placeholder="O número da sua casa"/>
-                    <label htmlFor="complement">Complemento:</label>
-                    <input name="complement" type="text" placeholder="O complemento da sua casa, se houver"/>
-                    <label htmlFor="district">Bairro:</label>
-                    <input name="district" type="text" placeholder="O bairro da sua casa"/>
-                    <label htmlFor="city">Cidade:</label>
-                    <input name="city" type="text" placeholder="Sua cidade"/>
-                    <label htmlFor="state">Estado:</label>
-                    <input name="state" type="text" placeholder="Seu estado"/>
+    }
 
-                    <input name="submit" type="submit" value="Concluir pagamento"/>
-                </PaymentForm>
-            </Content>  
-        </>
-            
-    )
+    if (method === "pix") {
+        return (
+            <>
+                <Choice>
+                    <div onClick={() => setMethod("credit")}>
+                        <h1>Cartão de crédito</h1>
+                    </div>
+                    <div>
+                        <h1 onClick={() => setMethod("pix")}>PIX</h1>
+                    </div>
+                </Choice>
+                <Content>
+                    <h1>Dados para o pagamento</h1>
+                    <PaymentForm>
+                        <label htmlFor="CPF">Nome:</label>
+                        <input name="CPF" type="text" pattern="[0-9]{11}" placeholder="O lindo nome que está no seu cartão" required />
+                        <input name="submit" type="submit" value="Concluir pagamento" />
+                    </PaymentForm>
+                </Content>
+
+
+            </>
+        )
+    }
+
+    if (method === "credit") {
+        return (
+            <>
+                <Choice>
+                    <div onClick={() => setMethod("credit")}>
+                        <h1>Cartão de crédito</h1>
+                    </div>
+                    <div>
+                        <h1 onClick={() => setMethod("pix")}>PIX</h1>
+                    </div>
+                </Choice>
+                <Content>
+                    <h1>Dados para o pagamento</h1>
+                    <PaymentForm>
+                        <label htmlFor="name">Nome:</label>
+                        <input name="name" type="text" pattern="[0-9]{11}" placeholder="O lindo nome que está no seu cartão" required />
+                        <label htmlFor="CPF">CPF:</label>
+                        <input name="CPF" type="text" pattern="[0-9]{11}" placeholder="CPF" required />
+                        <label htmlFor="creditCardNumber">Número do cartão de crédito:</label>
+                        <input name="creditCardNumber" type="text" pattern="[0-9]{12}" placeholder="Número do cartão" required />
+                        <label htmlFor="CVV">Código de segurança:</label>
+                        <input name="CVV" type="text" pattern="[0-9]{3}" placeholder="Código de segurança" required />
+                        <label htmlFor="date">Data de vencimento:</label>
+                        <input name="date" type="date" required />
+                    </PaymentForm>
+                    <h1>Dados de entrega</h1>
+                    <PaymentForm>
+                        <label htmlFor="street">Rua:</label>
+                        <input name="street" type="text" placeholder="A rua da sua casa" required />
+                        <label htmlFor="number">Número:</label>
+                        <input name="number" type="number" placeholder="O número da sua casa" />
+                        <label htmlFor="complement">Complemento:</label>
+                        <input name="complement" type="text" placeholder="O complemento da sua casa, se houver" />
+                        <label htmlFor="district">Bairro:</label>
+                        <input name="district" type="text" placeholder="O bairro da sua casa" />
+                        <label htmlFor="city">Cidade:</label>
+                        <input name="city" type="text" placeholder="Sua cidade" />
+                        <label htmlFor="state">Estado:</label>
+                        <input name="state" type="text" placeholder="Seu estado" />
+
+                        <input name="submit" type="submit" value="Concluir pagamento" />
+                    </PaymentForm>
+                </Content>
+            </>
+
+        )
+    }
 }
 
 const Choice = styled.div`
     display: flex;
+    justify-content: center;
+    align-items: center;
 
     div{
-        border: 1px solid grey
+        border: 1px solid grey;
+        width: 150px;
+        height: 150px;
+        margin-top: 3%;
+        margin-right: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
     }
 `
 
