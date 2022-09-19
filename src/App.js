@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import PaymentPage from "./components/PaymentPage";
+import ProductPage from "./pages/ProductPage";
 
 export default function App() {
   const [userData, setUserData] = useState(null);
@@ -41,12 +42,11 @@ export default function App() {
               <Register />
             </UserContext.Provider>
           } />
-
-
-          <Route path="/payment" element={
+            
+          <Route path="/products/:id" element={
             <UserContext.Provider value={{ userData, setUserData }}>
               <Header />
-              <PaymentPage value={{ userData, setUserData}}/>
+              <ProductPage />
             </UserContext.Provider>
           } />
 
